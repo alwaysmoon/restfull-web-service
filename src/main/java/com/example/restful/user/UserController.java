@@ -32,8 +32,14 @@ public class UserController {
 	
 	//GET /users/1 or users/10 --> String 문자 형태로 들어오지만 변수 형을 지정하면 변환되어 들어옴
 	@GetMapping("/users/{id}")
-	public User retrieveUser(@PathVariable int id) {
-		return service.findOne(id);
+	public User retrieveUser(@PathVariable int id) throws UserNotFoundException {
+		User user = service.findOne(id);
+		
+		if(user == null) {
+			throw new UserNotFoundException(String.format("ID[%s] not found", id));
+		}
+		
+		return user;
 	}
 	
 	@PostMapping("/users")
