@@ -1,4 +1,4 @@
-package com.example.restful;
+package com.example.restful.helloworld;
 // lombok
 
 import lombok.AllArgsConstructor;
@@ -12,4 +12,5 @@ public class HelloWorldBean {
 	
 	private String message;
 
+	
 }
